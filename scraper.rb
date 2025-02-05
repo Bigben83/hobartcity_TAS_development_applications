@@ -29,8 +29,12 @@ db = SQLite3::Database.new "data.sqlite"
 db.execute <<-SQL
   CREATE TABLE IF NOT EXISTS advertisement_data (
     id INTEGER PRIMARY KEY,
+    description TEXT,
+    date_received TEXT,
     address TEXT,
-    council_reference TEXT
+    council_reference TEXT,
+    applicant TEXT,
+    owner TEXT
   );
 SQL
 
@@ -41,6 +45,10 @@ advertisement_results.each do |result|
   # Extract the address and council reference
   address = result.css('.col-xs-8').text.strip
   council_reference = result.css('.col-xs-4').text.strip
+
+  # Log the extracted data to verify
+  logger.info("Extracted Address: #{address}")
+  logger.info("Extracted Council Reference: #{council_reference}")
 
   # Insert the extracted data into the database
   db.execute("INSERT INTO advertisement_data (address, council_reference) VALUES (?, ?)",
