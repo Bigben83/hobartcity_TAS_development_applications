@@ -41,6 +41,13 @@ SQL
 # Step 4: Extract advertisement results
 advertisement_results = doc.css('#advertisement-search-results .advertisement-result-row')
 
+# Define variables for storing extracted data for each entry
+description = ''
+date_received = ''
+council_reference = ''
+applicant = ''
+owner = ''
+
 advertisement_results.each do |result|
   # Extract the address and council reference
   address = result.css('.col-xs-8').text.strip
