@@ -50,11 +50,14 @@ applicant = ''
 owner = ''
 
 advertisement_results.each do |result|
+  # Log the structure of the result element for debugging
+  logger.info("Result HTML: #{result.to_html}")
+
   # Extract the address and council reference
   address = result.css('.col-xs-8').text.strip
   council_reference = result.css('.col-xs-4').text.strip
 
-  # Log the extracted data to verify
+  # Log the extracted address and council reference
   logger.info("Extracted Address: #{address}")
   logger.info("Extracted Council Reference: #{council_reference}")
 
