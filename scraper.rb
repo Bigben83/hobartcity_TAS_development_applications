@@ -42,6 +42,7 @@ SQL
 advertisement_results = doc.css('#advertisement-search-results .advertisement-result-row')
 
 # Define variables for storing extracted data for each entry
+address = ''
 description = ''
 date_received = ''
 council_reference = ''
